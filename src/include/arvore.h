@@ -2,25 +2,29 @@
 #define ARVORE_H
 
 #include <iostream>
+#include <string>
 
 
 struct node_t {
-	int Esq;
-	int Dir;
-	node_t *proximo;
+	char caracter;
+	node_t * esq;
+	node_t * dir;
 };
 
-class Pilha {
+class Arvore {
 private:
-    node_t *topo;
-    node_t *fundo;
+    node_t *cabeca;
+
+    //função que cria um nó e define seus filhos como nulo
+    node_t *criaNode();
+    void imprimeNoPreOrdem(node_t * no, std::string codigo);
 
 public:
-    Pilha();
-    ~Pilha();
-    void Empilha(int Esq, int Dir);
-    void Desempilha(int &Esq, int &Dir);
-    bool Vazia();
+    Arvore();
+    ~Arvore();
+    void deleteNode(node_t * apagar);
+    void insereNo(char caractere, std::string codigo);
+    void imprimePreOrdem();
 
 };
 

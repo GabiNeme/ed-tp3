@@ -19,7 +19,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 
 main: $(OBJECTS)
 	@mkdir -p $(BINDIR)
-	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o $(BINDIR)/tp2
+	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o $(BINDIR)/tp3
 
 
 all: main
