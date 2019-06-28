@@ -1,7 +1,9 @@
 #include <iostream>
 #include "arvore.h"
-#include "entrada/leituraEntrada.h"
-#include "saida/imprimeSaida.h"
+#include "fila.h"
+#include "criaArvoreDecode.h"
+#include "leMsgCriptografada.h"
+#include "descriptografa.h"
 /*
     O objetivo do presente programa é permitir a análise de eficiência de diversas versões do
     método de orndeação Quicksort. Para isso, o usuário deve entrar o tipo de quicksort
@@ -13,13 +15,17 @@
 
 int main(int argc, char *argv[]){
 
-    Arvore teste;
-    teste.insereNo('E',".");
-    teste.insereNo('U',"..");
-    teste.insereNo('F',".-");
-    teste.insereNo('G',"--");
-    teste.insereNo('M',"-.");
+    Arvore arvoreMorse;
+    criaArvoreDecode(arvoreMorse);
 
-    teste.imprimePreOrdem();
+    Fila frasesCriptografadas;
+    leMensagemCriptografada(frasesCriptografadas);
+    descriptografa(arvoreMorse, frasesCriptografadas);
 
+    //std::cout<< arvoreMorse.buscaCodigo("-..-") << std::endl;
+    std::cout << frasesCriptografadas.desenfileira() << std::endl;
+
+
+    //std::cout << frasesCriptografadas.desenfileira() << std::endl;
+    //teste.imprimePreOrdem();
 }

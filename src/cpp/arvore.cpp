@@ -27,7 +27,7 @@ node_t * Arvore::criaNode(){
     node_t *no = new node_t();
     no->esq = nullptr;
     no->dir = nullptr;
-    no->caracter = '#'; 
+    no->caracter = '#';
     return  no;
 }
 
@@ -45,15 +45,40 @@ void Arvore::insereNo(char caractere, std::string codigo){
         }else if (codigo.at(i) == '-'){
             if(no_atual->dir == nullptr){ //se não tem nó à direita, cria
                 no_atual->dir = criaNode();
-            }         
-            no_atual = no_atual->dir;   
+            }
+            no_atual = no_atual->dir;
         }else{
             std::cout << "Caractere não reconhecido: " << codigo.at(i) << std::endl;
             exit(0);
         }
-    }  
+    }
     no_atual->caracter = caractere;
 }
+
+
+
+char Arvore::buscaCodigo(std::string codigo){
+    node_t * no_atual = this->cabeca;
+
+    for (unsigned i=0; i < codigo.length(); i++){
+        if(codigo.at(i) == '.'){
+            if(no_atual->esq == nullptr){ //se não tem nó à esquerda, cria
+                return '#';
+            }
+            no_atual = no_atual->esq;
+        }else if (codigo.at(i) == '-'){
+            if(no_atual->dir == nullptr){ //se não tem nó à direita, cria
+                return '#';
+            }
+            no_atual = no_atual->dir;
+        }else{
+            std::cout << "Caractere não reconhecido: " << codigo.at(i) << std::endl;
+            exit(0);
+        }
+    }
+    return no_atual->caracter;
+}
+
 
 //Método que imprime a árvore e os códigos em pré ordem
 void Arvore::imprimePreOrdem(){

@@ -24,6 +24,7 @@ public:
     ~Arvore();
     void deleteNode(node_t * apagar);
     void insereNo(char caractere, std::string codigo);
+    char buscaCodigo(std::string codigo);
     void imprimePreOrdem();
 
 };
