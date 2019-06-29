@@ -2,7 +2,7 @@
 
 //Construtor
 Fila::Fila(){
-    //cria nó cabeça, com 'próximo' nulo e faz o fundo e topo apontarem pra ele
+    //cria nó cabeça, com 'próximo' nulo e faz frente e tras apontarem pra ele
     node_fila *no_cabeca = new node_fila();
     this->frente = no_cabeca;
     no_cabeca->proximo = nullptr;
@@ -38,14 +38,14 @@ void Fila::enfileira(std::string frase){
     this->tras = no_a_inserir;
 }
 
-//Retorna string do primeiro elemento
+//Retorna string do primeiro elemento da fila
 std::string Fila::desenfileira(){
     //obtém primeiro nó (depois do nó cabeça)
     node_fila *primDaFila;
     primDaFila = this->frente->proximo;
 
-    if (primDaFila == nullptr){ //se não tem primeiro elemento, retorna simbolo "#"
-        return "#";
+    if (primDaFila == nullptr){ //se não tem primeiro elemento, retorna vazio
+        return "";
     }else{
         std::string stringAux = primDaFila->frase; //salva a frase do elemento encontrado
         this->frente->proximo = primDaFila->proximo; //redireciona a frente da fila para o antigo segundo lugar
